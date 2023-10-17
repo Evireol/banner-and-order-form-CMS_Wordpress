@@ -1,0 +1,62 @@
+// АКЦИЯ
+color: #D23B60;
+ font-size: 96px;
+ font-family: Mplus 1p Bold;
+ font-weight: 700;
+ line-height: 42px;
+ word-wrap: break-word
+---
+// Врач высшей категории!
+color: #999999;
+ font-size: 26px;
+ font-family: Gilroy;
+ font-weight: 500;
+ text-transform: uppercase;
+ line-height: 30px;
+ word-wrap: break-word
+---
+// за 
+color: #D23B60;
+ font-size: 26px;
+ font-family: Roboto;
+ font-weight: 900;
+ word-wrap: break-word
+---
+// 1
+color: #D23B60;
+ font-size: 42px;
+ font-family: Roboto;
+ font-weight: 900;
+ letter-spacing: 4.20px;
+ word-wrap: break-word
+---
+// 800
+color: #D23B60;
+ font-size: 42px;
+ font-family: Roboto;
+ font-weight: 900;
+ word-wrap: break-word
+---
+//  ₽
+color: #D23B60;
+ font-size: 26px;
+ font-family: Roboto;
+ font-weight: 900;
+ word-wrap: break-word
+---
+// Консультация<br/>Гинеколога
+color: white;
+ font-size: 30px;
+ font-family: Gilroy;
+ font-weight: 800;
+ line-height: 36px;
+ letter-spacing: 0.90px;
+ word-wrap: break-word
+---
+// УЗИ
+color: white;
+ font-size: 76px;
+ font-family: Gilroy;
+ font-weight: 700;
+ line-height: 42px;
+ word-wrap: break-word
