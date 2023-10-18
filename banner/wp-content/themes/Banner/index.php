@@ -35,10 +35,11 @@
         }
         .DownLine_col-2
         {
-            font-weight:900;
+            font-weight:700;
             color: #D23B60;
-            font-size: 32px;
-            margin-top: 37px;
+            font-size: 42px;
+            margin-top: 30px;
+            font-family: Roboto, sans-serif;
         }
         .DownLine_col-4
         {
@@ -103,6 +104,16 @@
             margin-left: 16px;
             padding-bottom: 15px;
         }
+        .price-label
+        {
+            color:#D23B60;
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 42px;
+            word-wrap: break-word;
+            font-family: 'Roboto', sans-serif;
+            letter-spacing: 0px;
+        }
     </style>
     <title>Заполнить страницу Bootstrap фоном</title>
 </head>
@@ -114,15 +125,13 @@
     <div class="upLine">
         <div class=" row align-items-center no-gutters" style="padding-top:15px">
             <div  class="custom-col text-center" style="width: 150px; margin-left:30px ">
-                <p class="left-up-text">УЗИ</p> 
+                <p class="left-up-text"><?php the_field('base'); ?></p> 
             </div>
-            <div class="col text-center">
-                <div class="img-up-container">
+            <div class="custom-col text-center img-up-container">
                 <img class="Img" src="<?php echo get_template_directory_uri(); ?>\png\+.png" width="24" height="24">
-                </div>
             </div>
             <div class="col">
-            <p class="right-up-text">Консультация <br> Гинеколога</p> 
+            <p class="right-up-text"><?php the_field('other'); ?> <br></p> 
             </div>
         </div>
     </div>
@@ -133,7 +142,14 @@
                 <img class="Img" src="<?php echo get_template_directory_uri(); ?>\png\Pattern1.png" width="57" height="44">
             </div>
             <div class="custom-col min-width-100 DownLine_col-2" style="width: 215px;">
-                <div class="content-box text-center">за 1800 ₽</div>
+            <div class="content-box text-center">
+                <p>
+                    <span class="price-label">за</span>
+                    <?php the_field('price'); ?>
+                    <span class="price-label">₽</span>
+                </p>
+            </div>
+
             </div>
             <div class="custom-col min-width-100 DownLine_col-1-3" style="width: 129px;">
                 <img class="Img" src="<?php echo get_template_directory_uri(); ?>\png\Group 3.png" width="109" height="44">
@@ -148,7 +164,7 @@
                 <img class="Img" src="<?php echo get_template_directory_uri(); ?>\png\Star.png" width="36" height="36">
             </div>
             <div class="col">
-                <div class="content-box DownLine_col-6">Врач высшей категории!</div>
+                <div class="content-box DownLine_col-6"><?php the_field('comment'); ?></div>
             </div>
         </div>
     </div>
