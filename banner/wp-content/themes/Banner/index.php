@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="custom.css">
     <style>
         body {
 
@@ -168,8 +169,6 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
 <img class="Img ImgPosition" src="<?php echo get_template_directory_uri(); ?>\png\Узи2.png" width="359" height="200">
