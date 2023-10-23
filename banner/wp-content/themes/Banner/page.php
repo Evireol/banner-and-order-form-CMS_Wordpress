@@ -35,7 +35,7 @@ if ( is_page() ) {
             background-color: #fff;
             border-radius: 5px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+            z-index: 2;
             padding: 10px;
             margin-left: -10px;
             width: 100%;
@@ -99,7 +99,7 @@ if ( is_page() ) {
             margin-left: 17px;
 
         }
-
+        
 
         .slider::-webkit-slider-thumb {
             appearance: none;
@@ -110,6 +110,39 @@ if ( is_page() ) {
             cursor: pointer;
         }
 
+
+        .slider {
+        width: 100%;
+        position: absolute;
+        }
+
+        .image-start,
+        .image-end {
+        position: absolute;
+        top: 10%;
+        max-height: 12px;
+        pointer-events: none;
+        z-index: 1;
+        }
+
+        .image-start img,
+        .image-end img {
+        max-height: 100%; /* Подгоняем изображения по максимальной высоте */
+        }
+
+        .image-start {
+        left: +15px;
+        transform: translateX(70%);
+        transform: translateY(-100%);
+        }
+
+        .image-end {
+        position: absolute;
+        top: -10px;
+        right: 0; /* Смещаем элемент вправо */
+        transform: translateX(125%); /* Смещаем элемент влево на 100% ширины родительского элемента */
+        z-index: 1; /* Устанавливаем показывать img-end над input range и img-start */
+        }
 
         input[type="range"] {
         -webkit-appearance: none;
@@ -122,27 +155,54 @@ if ( is_page() ) {
         outline: none;
         }
 
+        input {
+            border: none;
+            background: transparent;
+            outline: none;
+            padding: 0;
+            margin: 0;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            cursor: pointer;
+        }
+
         .ImgPosition
         {
             top: 0;
-            z-index: 1;
+            z-index: 0;
             margin-top: 4px;
         }
-        .ImgPosition25
+
+        .img-25,
+        .img-50,
+        .img-75 
         {
-            left: 25%;
+        position: absolute;
+        top: -5px; /* Немного выше */
+        z-index: 1;
+        padding: 0;
+        margin: 0;
+        pointer-events: none;
         }
-        .ImgPosition50
-        {
-            left: 50%;
+
+        .img-25 {
+        top: -15px;
+        /* left: 27.5%; */
+        /* transform: translateX(-25%); */
         }
-        .ImgPosition75
-        {
-            left: 75%;
+
+        .img-50 {
+        /* left: 52.5%; */
+        /* transform: translateX(-50%); */
         }
-        .ImgPosition100
-        {
-            left: 97%; 
+
+        .img-75 {
+        /* left: 77.5%; */
+        /* transform: translateX(-75%); */
         }
 
     </style>
@@ -162,35 +222,35 @@ if ( is_page() ) {
         </div>
 
         <div class="row">
-    <div class="col">
-        <div class="row text">Тип бытовки</div>
-        <div class="dropdown NoMargin">
-            <!-- Поле меню по умолчанию -->
-            <div class="default-content">Поле 1</div>
-            
-            <!-- Список элементов меню -->
-            <div class="dropdown-content">
-                <div class="menu-item">Поле 1</div>
-                <div class="menu-item">Поле 2</div>
-                <div class="menu-item">Поле 3</div>
+            <div class="col">
+                <div class="row text">Тип бытовки</div>
+                <div class="dropdown NoMargin">
+                    <!-- Поле меню по умолчанию -->
+                    <div class="default-content">Поле 1</div>
+                    
+                    <!-- Список элементов меню -->
+                    <div class="dropdown-content">
+                        <div class="menu-item">Поле 1</div>
+                        <div class="menu-item">Поле 2</div>
+                        <div class="menu-item">Поле 3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="row text">Расстояние от КАД</div>
+                <div class="dropdown NoMargin">
+                    <!-- Поле меню по умолчанию -->
+                    <div class="default-content">Поле 1</div>
+                    
+                    <!-- Список элементов меню -->
+                    <div class="dropdown-content">
+                        <div class="menu-item">Поле 1</div>
+                        <div class="menu-item">Поле 2</div>
+                        <div class="menu-item">Поле 3</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col">
-        <div class="row text">Расстояние от КАД</div>
-        <div class="dropdown NoMargin">
-            <!-- Поле меню по умолчанию -->
-            <div class="default-content">Поле 1</div>
-            
-            <!-- Список элементов меню -->
-            <div class="dropdown-content">
-                <div class="menu-item">Поле 1</div>
-                <div class="menu-item">Поле 2</div>
-                <div class="menu-item">Поле 3</div>
-            </div>
-        </div>
-    </div>
-</div>
 
         <div class="row">
             <div class="col">
@@ -199,20 +259,24 @@ if ( is_page() ) {
                     Срок аренды, месяцев
                     </div>    
                     <div class="custom-col count  text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
-                    <div class="value">0</div>
+                    <input class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="16" value="16" oninput="restrictInput(this);">
                     </div>
                 </div>
                 
                 <div class="row">
-                    <div class="col">
-                        <input class="slider" type="range" id="range" min="0" max="24" value="16" step="1">
-
-                            <!-- <img class="Img ImgPosition" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12"> -->
-                            <!-- <img class="Img ImgPosition ImgPosition25" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="8" height="8">
-                            <img class="Img ImgPosition ImgPosition50" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="8" height="8">
-                            <img class="Img ImgPosition ImgPosition75" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="8" height="8">
-                            <img class="Img ImgPosition ImgPosition100" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12"> -->
-
+                    <div class="col container range-container NoMargin">
+                        <div>
+                            <input class="slider" type="range" id="range" min="0" max="16" value="16" step="1">
+                        </div>
+                        <div class="image-start">
+                            <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
+                        </div>
+                        <!-- <img class="img-25" id="img-25"  src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="1" height="12"> -->
+                        <img class="img-50" id="img-50" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="12" height="12">
+                        <!-- <img class="img-75" id="img-75" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="1" height="12"> -->
+                        <div class="image-end">
+                           <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -246,9 +310,9 @@ if ( is_page() ) {
     var menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach(function(item) {
         item.addEventListener('click', function() {
-            // Скрываем поле меню по умолчанию
+            // Скрывать поле меню по умолчанию
             this.closest('.dropdown').querySelector('.default-content').style.display = 'none';
-            // Отобразим выбранный элемент меню
+            // Отобразть выбранный элемент меню
             this.closest('.dropdown').querySelector('.default-content').innerText = this.innerText;
             this.closest('.dropdown').querySelector('.default-content').style.display = 'block';
         });
@@ -256,22 +320,75 @@ if ( is_page() ) {
 
 
 
-  const sliderEl = document.querySelector("#range")
-const sliderValue = document.querySelector(".value")
+    const sliderEl = document.querySelector("#range");
+    const valueInput = document.querySelector(".value");
 
-sliderEl.addEventListener("input", (event) => {
-  const tempSliderValue = event.target.value; 
-  
-  sliderValue.textContent = tempSliderValue;
-  
-  const progress = (tempSliderValue / sliderEl.max) * 100;
- 
-  sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
-  
-})
-  
-  
+    sliderEl.addEventListener("input", (event) => {
+        const tempSliderValue = event.target.value;
+    
+        // Обновление значение в поле .value
+        valueInput.value = tempSliderValue;
+    
+        const progress = (tempSliderValue / sliderEl.max) * 100;
+    
+        sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+    });
 
+    
+
+    valueInput.addEventListener("input", (event) => {
+        const tempValue = parseInt(event.target.value);
+    
+        // Проверка, чтобы значение находилось в диапазоне от минимума до максимума ползунка
+        if (tempValue >= parseInt(sliderEl.min) && tempValue <= parseInt(sliderEl.max)) {
+            sliderEl.value = tempValue;
+        
+            const progress = (tempValue / sliderEl.max) * 100;
+            sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+        }
+    });
+
+  
+    function restrictInput(input) {
+      input.value = input.value.replace(/[^0-9]/g, '');
+
+      // Проверка диапазона
+      var min = parseInt(input.getAttribute("min"));
+      var max = parseInt(input.getAttribute("max"));
+      var value = parseInt(input.value);
+
+      if (!isNaN(min) && value < min) {
+        input.value = min;
+      } else if (!isNaN(max) && value > max) {
+        input.value = max;
+      }
+    }
+
+
+    const rangeInput = document.querySelector('#range');
+    var myImg = document.querySelector('#img-50');
+
+    var thumbWidth = 15;
+
+    var rangeClientWidth = rangeInput.clientWidth;
+    var minRangeValue = parseInt(rangeInput.min);
+    var maxRangeValue = parseInt(rangeInput.max);
+
+    var off = (rangeClientWidth + thumbWidth) / maxRangeValue;
+
+    var off2 = off * (rangeInput.max * (1/2));
+
+    var horizontalCentering = (myImg.width / 2) - (thumbWidth / 2);
+
+    var px2 = off2 - horizontalCentering;
+
+    var px2 = off2 - horizontalCentering;
+
+    const GiveGivePosition2 =  px2 + "px";
+
+     document.querySelector('#img-50').style['left'] = GiveGivePosition2;
+
+  
 </script>
     
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
