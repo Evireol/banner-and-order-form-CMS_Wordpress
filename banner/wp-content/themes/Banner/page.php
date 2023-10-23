@@ -99,7 +99,20 @@ if ( is_page() ) {
             margin-left: 17px;
 
         }
-        
+
+        .textForLine
+        {
+            padding: 0;
+            width: 100%;
+            font-family: Open Sans;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 32px;
+            letter-spacing: 0em;
+            text-align: center;
+            color: #AD2446;
+            top: -5px;
+        }
 
         .slider::-webkit-slider-thumb {
             appearance: none;
@@ -138,7 +151,7 @@ if ( is_page() ) {
 
         .image-end {
         position: absolute;
-        top: -10px;
+        top: -12px;
         right: 0; /* Смещаем элемент вправо */
         transform: translateX(125%); /* Смещаем элемент влево на 100% ширины родительского элемента */
         z-index: 1; /* Устанавливаем показывать img-end над input range и img-start */
@@ -204,6 +217,28 @@ if ( is_page() ) {
         /* left: 77.5%; */
         /* transform: translateX(-75%); */
         }
+        .Button
+        {
+            margin-top: 60px;
+            height: 90px;
+            width: 308px;
+            color: white;
+            background-color: #AD2446;
+            padding-bottom: 50px;
+            font-family: Exo 2.0;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: Exo 2.0;
+            line-height: 19px;
+            text-align: center;
+            margin-left: 27%;
+        }
+
+        .Button-main
+        {
+            background-color: #AD2446;
+            padding: 8px;
+        }
 
     </style>
     <title>Заполнить страницу Bootstrap фоном</title>
@@ -254,26 +289,32 @@ if ( is_page() ) {
 
         <div class="row">
             <div class="col">
-            <div class="row text ">
+                <div class="row text">
                     <div class="custom-col text-center d-flex align-items-center">
                     Срок аренды, месяцев
                     </div>    
-                    <div class="custom-col count  text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
-                    <input class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="16" value="16" oninput="restrictInput(this);">
+                    <div class="custom-col count text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
+                    <input id="value1" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="24" value="0" oninput="restrictInput(this);">
                     </div>
                 </div>
                 
+                <div class="conteiner textForLine" style="text-align: center; display: flex; justify-content: space-between;"">
+                    <div class="col-6 textForLine" style="text-align: left; margin-left: -14px">
+                    <text fill='#0074d9' x='0' y='60'>0</text>
+                    </div>
+                    <div class="col-6 textForLine " style="text-align: right; margin-right: -15px">
+                    <text fill='#0074d9' x='100%' y='60'>24</text>
+                    </div>
+                    </g>
+                </div>
                 <div class="row">
                     <div class="col container range-container NoMargin">
                         <div>
-                            <input class="slider" type="range" id="range" min="0" max="16" value="16" step="1">
+                            <input class="slider" type="range" id="range" min="0" max="24" value="0" step="1">
                         </div>
                         <div class="image-start">
                             <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
                         </div>
-                        <!-- <img class="img-25" id="img-25"  src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="1" height="12"> -->
-                        <img class="img-50" id="img-50" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="12" height="12">
-                        <!-- <img class="img-75" id="img-75" src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 42.png" width="1" height="12"> -->
                         <div class="image-end">
                            <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
                         </div>
@@ -283,21 +324,44 @@ if ( is_page() ) {
         </div>
 
         <div class="row">
-            <div class="col">
+        <div class="col">
                 <div class="row text ">
                     <div class="custom-col text-center d-flex align-items-center">
-                    Кол-во бытовок, шт
+                    Коли-во бытовок, шт.
                     </div>    
                     <div class="custom-col count  text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
-                            7
+                        <input id="value2" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="20" value="0" oninput="restrictInput(this);">
                     </div>
                 </div>
-                <div class="row">____</div>
+
+                <div class="conteiner textForLine" style="text-align: center; display: flex; justify-content: space-between;"">
+                    <div class="col-6 textForLine" style="text-align: left; margin-left: -14px">
+                    <text fill='#0074d9' x='0' y='60'>0</text>
+                    </div>
+                    <div class="col-6 textForLine " style="text-align: right; margin-right: -15px">
+                    <text fill='#0074d9' x='100%' y='60'>20</text>
+                    </div>
+                    </g>
+                </div>
+                
+                <div class="row">
+                    <div class="col container range-container NoMargin">
+                        <div>
+                            <input class="slider" type="range" id="range2" min="0" max="20" value="0" step="1">
+                        </div>
+                        <div class="image-start">
+                            <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
+                        </div>
+                        <div class="image-end">
+                           <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col">
+        <div class="row Button">
+            <div class="col Button-main">
                 кнопка
             </div>
         </div>
@@ -320,19 +384,33 @@ if ( is_page() ) {
 
 
 
-    const sliderEl = document.querySelector("#range");
-    const valueInput = document.querySelector(".value");
+const sliderEl  = document.querySelector("#range");
+const sliderEl2 =  document.querySelector("#range2");
+const valueInput = document.querySelector("#value1");
+const valueInput2  = document.querySelector("#value2");
 
-    sliderEl.addEventListener("input", (event) => {
-        const tempSliderValue = event.target.value;
-    
-        // Обновление значение в поле .value
-        valueInput.value = tempSliderValue;
-    
-        const progress = (tempSliderValue / sliderEl.max) * 100;
-    
-        sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
-    });
+
+sliderEl.addEventListener("input", (event) => {
+    const tempSliderValue = event.target.value;
+
+    // Обновление значение в поле .value
+    valueInput.value = tempSliderValue;
+
+    const progress = (tempSliderValue / sliderEl.max) * 100;
+
+    sliderEl.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+});
+
+sliderEl2.addEventListener("input", (event) => {
+    const tempSliderValue2 = event.target.value;
+
+    // Обновление значение в поле .value2
+    valueInput2.value = tempSliderValue2;
+
+    const progress2 = (tempSliderValue2 / sliderEl2.max) * 100;
+
+    sliderEl2.style.background = `linear-gradient(to right, #f50 ${progress2}%, #ccc ${progress2}%)`;
+});
 
     
 
@@ -365,29 +443,24 @@ if ( is_page() ) {
     }
 
 
-    const rangeInput = document.querySelector('#range');
-    var myImg = document.querySelector('#img-50');
+    // const rangeInput = document.querySelector('#range');
+    // var myImg = document.querySelector('#img-50');
 
-    var thumbWidth = 15;
+    // var thumbWidth = 15;
 
-    var rangeClientWidth = rangeInput.clientWidth;
-    var minRangeValue = parseInt(rangeInput.min);
-    var maxRangeValue = parseInt(rangeInput.max);
+    // var rangeClientWidth = rangeInput.clientWidth;
+    // var minRangeValue = parseInt(rangeInput.min);
+    // var maxRangeValue = parseInt(rangeInput.max);
 
-    var off = (rangeClientWidth + thumbWidth) / maxRangeValue;
+    // var off = (rangeClientWidth + thumbWidth) / maxRangeValue;
+    // var off2 = off * (rangeInput.max * (1/2));
+    // var horizontalCentering = (myImg.width / 2) - (thumbWidth / 2);
+    // var px2 = off2 - horizontalCentering;
+    // var px2 = off2 - horizontalCentering;
 
-    var off2 = off * (rangeInput.max * (1/2));
+    // const GiveGivePosition2 =  px2 + "px";
 
-    var horizontalCentering = (myImg.width / 2) - (thumbWidth / 2);
-
-    var px2 = off2 - horizontalCentering;
-
-    var px2 = off2 - horizontalCentering;
-
-    const GiveGivePosition2 =  px2 + "px";
-
-     document.querySelector('#img-50').style['left'] = GiveGivePosition2;
-
+    //  document.querySelector('#img-50').style['left'] = GiveGivePosition2;
   
 </script>
     
