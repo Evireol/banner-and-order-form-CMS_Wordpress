@@ -260,28 +260,53 @@ if ( is_page() ) {
             <div class="col">
                 <div class="row text">Тип бытовки</div>
                 <div class="dropdown NoMargin">
-                    <!-- Поле меню по умолчанию -->
-                    <div class="default-content">Поле 1</div>
+
+                    <?php
+                    $loop = CFS()->get('loop_staff');
+                    foreach ($loop as $row){
+                        ?>
+                        <div class="default-content"><?= $row['staff'] ?></div>
+
+                    <?php
+                    break;
+                    }?>
                     
-                    <!-- Список элементов меню -->
                     <div class="dropdown-content">
-                        <div class="menu-item">Поле 1</div>
-                        <div class="menu-item">Поле 2</div>
-                        <div class="menu-item">Поле 3</div>
+
+                    <?php
+                    $loop = CFS()->get('loop_staff');
+                    foreach ($loop as $row){
+                        ?>
+                        <div class="menu-item"><?= $row['staff'] ?></div>
+                    <?php
+                    }?>
+
                     </div>
                 </div>
             </div>
             <div class="col">
                 <div class="row text">Расстояние от КАД</div>
                 <div class="dropdown NoMargin">
-                    <!-- Поле меню по умолчанию -->
-                    <div class="default-content">Поле 1</div>
+
+                <?php
+                    $loop = CFS()->get('distance');
+                    foreach ($loop as $row){
+                        ?>
+                        <div class="default-content"><?= $row['delivery'] ?></div>
+
+                    <?php
+                    break;
+                    }?>
                     
-                    <!-- Список элементов меню -->
                     <div class="dropdown-content">
-                        <div class="menu-item">Поле 1</div>
-                        <div class="menu-item">Поле 2</div>
-                        <div class="menu-item">Поле 3</div>
+
+                    <?php
+                    $loop = CFS()->get('distance');
+                    foreach ($loop as $row){
+                        ?>
+                        <div class="menu-item"><?= $row['delivery'] ?></div>
+                <?php
+                }?>
                     </div>
                 </div>
             </div>
@@ -294,7 +319,7 @@ if ( is_page() ) {
                     Срок аренды, месяцев
                     </div>    
                     <div class="custom-col count text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
-                    <input id="value1" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="24" value="0" oninput="restrictInput(this);">
+                    <input id="value1" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max=<?php the_field('count');?> value="0" oninput="restrictInput(this);">
                     </div>
                 </div>
                 
@@ -303,14 +328,14 @@ if ( is_page() ) {
                     <text fill='#0074d9' x='0' y='60'>0</text>
                     </div>
                     <div class="col-6 textForLine " style="text-align: right; margin-right: -15px">
-                    <text fill='#0074d9' x='100%' y='60'>24</text>
+                    <text fill='#0074d9' x='100%' y='60'><?php the_field('count');?></text>
                     </div>
                     </g>
                 </div>
                 <div class="row">
                     <div class="col container range-container NoMargin">
                         <div>
-                            <input class="slider" type="range" id="range" min="0" max="24" value="0" step="1">
+                            <input class="slider" type="range" id="range" min="0" max=<?php the_field('count');?> value="0" step="1">
                         </div>
                         <div class="image-start">
                             <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
@@ -330,7 +355,7 @@ if ( is_page() ) {
                     Коли-во бытовок, шт.
                     </div>    
                     <div class="custom-col count  text-center d-flex justify-content-center align-items-center" style="width: 50px; height:40px">
-                        <input id="value2" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max="20" value="0" oninput="restrictInput(this);">
+                        <input id="value2" class="value text-center d-flex justify-content-center align-items-center" type="text" min="0" max=<?php the_field('stuff');?> value="0" oninput="restrictInput(this);">
                     </div>
                 </div>
 
@@ -339,7 +364,7 @@ if ( is_page() ) {
                     <text fill='#0074d9' x='0' y='60'>0</text>
                     </div>
                     <div class="col-6 textForLine " style="text-align: right; margin-right: -15px">
-                    <text fill='#0074d9' x='100%' y='60'>20</text>
+                    <text fill='#0074d9' x='100%' y='60'><?php the_field('stuff');?></text>
                     </div>
                     </g>
                 </div>
@@ -347,7 +372,7 @@ if ( is_page() ) {
                 <div class="row">
                     <div class="col container range-container NoMargin">
                         <div>
-                            <input class="slider" type="range" id="range2" min="0" max="20" value="0" step="1">
+                            <input class="slider" type="range" id="range2" min="0" max=<?php the_field('stuff');?> value="0" step="1">
                         </div>
                         <div class="image-start">
                             <img src="<?php echo get_template_directory_uri(); ?>\png\Ellipse 40.png" width="12" height="12">
